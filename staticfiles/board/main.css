@@ -1,0 +1,55 @@
+.subject-heading {
+    font-weight: 900;
+    font-size: 0.8rem;
+}
+
+.inline-options {
+    color: #2F3136;
+}
+
+.inline-options-container {
+    float: right;
+}
+
+.post-container {
+    margin: 10px;
+    max-width: 768px;
+}
+
+@media only screen and (max-width: 599px) {
+    /* tablets */
+    .post-card {
+        width: 95%;
+    }
+    .info-sidebar {
+        float: center;
+        width: 95%;
+        margin: 16px;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    /* tablets */
+    .post-card {
+        width: 80%;
+    }
+    .info-sidebar {
+        float: left;
+        width: 80%;
+        margin: 16px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    /* desktop */
+    .post-card {
+        width: 60%;
+    }
+    .info-sidebar {
+        float: right;
+        width: 35%;
+        margin-top: 0;
+        margin-left: 0;
+        margin-right: 16px;
+    }
+}

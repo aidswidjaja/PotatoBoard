@@ -1,0 +1,32 @@
+<!doctype html>
+<html class="no-js" lang="en-AU">
+
+{% load static %}
+
+<script src="{% static 'pipeline.js' %}"></script>
+
+<!-- Find PotatoBoard at https://github.com/aidswidjaja/potatoboard-->
+<!-- open source and everything under the MIT License! 2020-2021 (c) aidswidjaja -->
+
+<head>
+    <title>Pipelining...</title>
+    {% include "board/head.html" %}
+    
+    <style>
+        body { margin: 5px; }
+    </style>
+</head>
+
+<body>
+    {% if user.is_authenticated %}
+
+    <h1>Now outputting...</h1>
+    <div id="console">
+        <samp>[Console] Page loaded. Begin logging.</samp>
+    </div>
+
+    {% else %}
+    {% endif %}
+</body>
+
+</html>

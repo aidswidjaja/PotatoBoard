@@ -1,0 +1,4 @@
+# include this in the same directory as settings.py
+
+#SOCIAL_AUTH_GOOGLE_OAUTH2_WHITELISTED_DOMAINS=['pineapple.net']
+#SOCIAL_AUTH_GOOGLE_OAUTH2_WHITELISTED_EMAILS=['kirito@pineapple.net']

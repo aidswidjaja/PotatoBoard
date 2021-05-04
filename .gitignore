@@ -1,0 +1,5 @@
+.env
+potato/.env
+potato/settings_local.py
+.vscode
+db.sqlite3

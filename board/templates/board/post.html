@@ -1,0 +1,56 @@
+<!doctype html>
+<html class="no-js" lang="en-AU">
+
+<!-- Find PotatoBoard at https://github.com/aidswidjaja/potatoboard-->
+<!-- open source and everything under the MIT License! 2020-2021 (c) aidswidjaja -->
+
+<head>
+    <title>{{ post.get_subject_display }} | TYSK</title>
+    {% include "board/head.html" %}
+</head>
+
+<body>
+    {% include "board/init.html" %}
+    {% if user.is_authenticated %}
+    <div class="jumbotron post-container">
+        <h5>{{ post.get_subject_display }}</h5>
+        <h6>
+            {% if post.channel == "MAIN" %}
+            <span class="badge badge-primary" style="background-color: #0070FF;">Main channel</span>
+            {% endif %}
+            {% if post.channel == "LOWP" %}
+            <span class="badge badge-primary" style="background-color: #FFBE00; color: #000000;">Low
+                priority</span>
+            {% endif %}
+            {% if post.channel == "META" %}
+            <span class="badge badge-primary" style="background-color: #008A4F;">Meta update</span>
+            {% endif %}
+            {% if post.important %}
+            <span class="badge badge-primary" style="background-color: #FF0000;">Important</span>
+            {% endif %}
+        </h6>
+        <h5>{{ post.title }}</h5>
+        <p id="post-content"></p>
+        <h6>Location: {{ post.location }}</h6>
+        <h6>Published by {{ post.creator }} on {{ post.date_created }}<br>Last modified {{ post.date_created }}</h6>
+        <div class="input-group">
+            {% load static %}
+            <script src="{% static 'init.js' %}"></script>
+            <input class="form-control" id="clipboard-share" value="https://{{ url }}/{{ post.id }}/" readonly>
+            <button class="btn btn-outline-secondary clipboard-handler" type="button" id="button-addon-2"
+                data-clipboard-text="https://{{ url }}/{{ post.id }}/">Copy link&nbsp;<img
+                    src="{% static 'copy.svg' %}"></span>
+        </div>
+    </div>
+    <script>
+        var element = document.getElementById('post-content');
+        content = marked('{{ post.content|linebreaksbr }}');
+        element.insertAdjacentHTML('beforeend', content);
+    </script>
+    {% else %}
+    {% endif %}
+</body>
+
+{% include "board/footer.html" %}
+
+</html>

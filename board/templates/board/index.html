@@ -1,0 +1,92 @@
+<!doctype html>
+<html class="no-js" lang="en-AU">
+
+<!-- Find PotatoBoard at https://github.com/aidswidjaja/potatoboard-->
+<!-- open source and everything under the MIT License! 2020-2021 (c) aidswidjaja -->
+
+<head>
+    <title>Home | TYSK</title>
+    {% include "board/head.html" %}
+</head>
+
+<body>
+
+    {% include "board/init.html" %}
+
+    {% if user.is_authenticated %}
+    <div class="body-container">
+        <div class="card d-flex info-sidebar">
+            <div class="card-body" id="info-container">
+                {% for information in infotext %}
+                <script>
+                    var element = document.getElementById('info-container');
+                    content = marked('{{ information.info_contents }}');
+                    element.insertAdjacentHTML('afterbegin', content);
+                </script>
+                {% endfor %}
+            </div>
+        </div>
+    {% else %}
+    {% endif %}
+
+        {% if post_list %}
+        {% for post in post_list %}
+        <div class="main-content">
+            <div class="card mb-3 ms-3 me-3 post-card">
+                <div class="card-header">
+                    <h6 class="text-uppercase subject-heading">{{ post.get_subject_display }}</h6>
+                </div>
+                <div class="card-body">
+                    <h5>{{ post.title }}</h5>
+                    <p class="card-text">
+                    <p class="post-card-text" id="{{ post.id }}"></p>
+                    <script>
+                        var element = document.getElementById('{{ post.id }}');
+                        content = marked('{{ post.content|linebreaksbr }}');
+                        element.insertAdjacentHTML('beforeend', content);
+                // $clamp(element, {clamp: 3, useNativeClamp: true,});
+                // see https://github.com/aidswidjaja/PotatoBoard/issues/1
+                    </script>
+                    <br>
+                    </p>
+                    <h6>
+                        {% if post.channel == "MAIN" %}
+                        <span class="badge badge-primary" style="background-color: #0070FF;">Main channel</span>
+                        {% endif %}
+                        {% if post.channel == "LOWP" %}
+                        <span class="badge badge-primary" style="background-color: #FFBE00; color: #000000;">Low
+                            priority</span>
+                        {% endif %}
+                        {% if post.channel == "META" %}
+                        <span class="badge badge-primary" style="background-color: #008A4F;">Meta update</span>
+                        {% endif %}
+                        {% if post.important %}
+                        <span class="badge badge-primary" style="background-color: #FF0000;">Important</span>
+                        {% endif %}
+                        <span class="inline-options-container">
+                            <a class="inline-options clipboard-handler" id="tooltip{{ post.id }}"
+                                data-clipboard-text="https://{{ url }}/{{ post.id}}/">permalink</a>
+                            &nbsp;
+                            <a class="inline-options" href="{{ post.id }}">see details >></a>
+                        </span>
+                    </h6>
+                </div>
+            </div>
+            {% endfor %}
+            <div class="card mb-3 ms-3 me-3 post-card">
+                <div class="card-footer">
+                    <p><code>you're currently seeing the 10 most recent posts. <a href="all/">see every post EVER!</a> warning: this may kill your computer</code>
+                    </p>
+                </div>
+            </div>
+            {% else %}
+            {% endif %}
+
+        </div>
+    </div>
+
+</body>
+
+{% include "board/footer.html" %}
+
+</html>

@@ -1,0 +1,36 @@
+<!doctype html>
+<html class="no-js" lang="en-AU">
+
+<!-- Find PotatoBoard at https://github.com/aidswidjaja/potatoboard-->
+<!-- open source and everything under the MIT License! 2020-2021 (c) aidswidjaja -->
+
+<head>
+    <title>Oof | TYSK</title>
+    {% include "board/head.html" %}
+    <style>
+        label {
+            font-size: 1.2rem;
+        }
+
+        tr {
+            border-top: 30px solid;
+            border-bottom: 30px solid;
+            border-color: transparent;
+        }
+    </style>
+</head>
+
+<body>
+    {% include "board/init.html" %}
+
+    <h1>Welp</h1>
+
+    <p>You didn't use an email address domain that is permitted on the system. Try logging out below, then log back in again. (AuthForbidden at /complete/google-oauth2/ Your credentials aren't allowed)</p>
+    <p><a class="btn btn-primary" href="/logout/">
+        Log out
+    </a></p>
+</body>
+
+{% include "board/footer.html" %}
+
+</html>

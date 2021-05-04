@@ -1,0 +1,47 @@
+<!doctype html>
+<html class="no-js" lang="en-AU">
+
+<!-- Find PotatoBoard at https://github.com/aidswidjaja/potatoboard-->
+<!-- open source and everything under the MIT License! 2020-2021 (c) aidswidjaja -->
+
+<head>
+    <title>Push a new post | TYSK</title>
+    {% include "board/head.html" %}
+    <style>
+        label {
+            font-size: 1.2rem;
+        }
+
+        tr {
+            border-top: 30px solid;
+            border-bottom: 30px solid;
+            border-color: transparent;
+        }
+    </style>
+
+</head>
+
+<body>
+    {% include "board/init.html" %}
+    {% if user.is_authenticated %}
+
+    <div class="jumbotron post-container main-content">
+        <h2>Push a new post</h2>
+
+        <form method="post">
+            {% csrf_token %}
+            <table>
+                {{ form.as_table }}
+            </table>
+            {{ form.errors }}
+            {{ form.non_field_errors }}
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    {% else %}
+    {% endif %}
+</body>
+
+{% include "board/footer.html" %}
+
+</html>

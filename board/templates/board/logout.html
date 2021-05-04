@@ -1,0 +1,34 @@
+<!doctype html>
+<html class="no-js" lang="en-AU">
+
+<!-- Find PotatoBoard at https://github.com/aidswidjaja/potatoboard-->
+<!-- open source and everything under the MIT License! 2020-2021 (c) aidswidjaja -->
+
+<head>
+    <title>Logged out successfully | TYSK</title>
+    {% include "board/head.html" %}
+    <style>
+        label {
+            font-size: 1.2rem;
+        }
+
+        tr {
+            border-top: 30px solid;
+            border-bottom: 30px solid;
+            border-color: transparent;
+        }
+    </style>
+</head>
+
+<body>
+    {% include "board/init.html" %}
+
+    <p>You have logged out.</p>
+    <p><a class="btn btn-primary" href="{% url 'social:begin' 'google-oauth2' %}">
+        Login
+    </a></p>
+</body>
+
+{% include "board/footer.html" %}
+
+</html>

@@ -1,0 +1,64 @@
+<!-- Find PotatoBoard at https://github.com/aidswidjaja/potatoboard-->
+<!-- open source and everything under the MIT License! 2020-2021 (c) aidswidjaja -->
+
+<!-- using PotatoBoard outside of TYSK? you'll need to replace some of the hardcoded strings in this file then -->
+
+{% load static %}
+
+<script src="{% static 'init.js' %}"></script>
+
+{% if emergency %}
+{% for enabled in emergency %}
+{% if emergency.enabled %}
+<div class="alert alert-danger" role="alert">
+    Emergency!
+</div>
+{% endif %}
+{% endfor %}
+{% endif %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" style="font-weight: bold" href="/">TYSK PotatoBoard</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://tysk.adrian.id.au">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/manage">Manage</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin">Admin</a>
+                </li>
+            </ul>
+            <form class="d-flex">
+                <!-- SEARCH FUNCTION START -->
+                <input class="form-control me-2" type="search" placeholder="Search PotatoBoard" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+                <!-- SEARCH FUNCTION END   -->
+            </form>
+        </div>
+    </div>
+</nav>
+<br>
+
+{% if user.is_authenticated %}
+{% else %}
+<div class="mb-3 ms-3 me-3">
+    <p></p>
+    Welcome to TYSK PotatoBoard! Please sign in with your school email address :D
+    <br><br>
+    <p><a class="btn btn-primary" href="{% url 'social:begin' 'google-oauth2' %}">
+            Login
+        </a></p>
+</div>
+
+{% endif %}

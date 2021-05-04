@@ -1,0 +1,36 @@
+<!doctype html>
+<html class="no-js" lang="en-AU">
+
+<!-- Find PotatoBoard at https://github.com/aidswidjaja/potatoboard-->
+<!-- open source and everything under the MIT License! 2020-2021 (c) aidswidjaja -->
+
+<head>
+    <title>Manage | TYSK</title>
+    {% include "board/head.html" %}
+</head>
+
+<body>
+    {% include "board/init.html" %}
+    {% if user.is_authenticated %}
+
+    <div class="jumbotron post-container main-content">
+        <h1>Manage</h1>
+        {% for information in infotext %}
+        <span id="info-container"></span>
+        <script>
+            var element = document.getElementById('info-container');
+            content = marked('{{ information.manage_contents }}');
+            element.insertAdjacentHTML('afterbegin', content);
+        </script>
+        {% endfor %}
+        <a class="btn btn-primary" href="push/" role="button"><strong>Push</strong> a new post</a>
+    </div>
+
+
+    {% else %}
+    {% endif %}
+</body>
+
+{% include "board/footer.html" %}
+
+</html>
