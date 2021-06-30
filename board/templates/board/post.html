@@ -15,7 +15,7 @@
     <div class="jumbotron post-container">
         <h5>{{ post.get_subject_display }}</h5>
         <h6>
-            {% if post.channel == "MAIN" %}
+            {% if post.channel == "MAIN" %} <!-- quality DRY code -->
             <span class="badge badge-primary" style="background-color: #0070FF;">Main channel</span>
             {% endif %}
             {% if post.channel == "LOWP" %}
@@ -32,6 +32,7 @@
         <h5>{{ post.title }}</h5>
         <p id="post-content"></p>
         <h6>Location: {{ post.location }}</h6>
+        <h6>Attachments: <a>https://{{ url }}/{{ post.file }}</a></h6>
         <h6>Published by {{ post.creator }} on {{ post.date_created }}<br>Last modified {{ post.date_created }}</h6>
         <div class="input-group">
             {% load static %}

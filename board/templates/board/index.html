@@ -17,13 +17,11 @@
     <div class="body-container">
         <div class="card d-flex info-sidebar">
             <div class="card-body" id="info-container">
-                {% for information in infotext %}
                 <script>
                     var element = document.getElementById('info-container');
                     content = marked('{{ information.info_contents }}');
                     element.insertAdjacentHTML('afterbegin', content);
                 </script>
-                {% endfor %}
             </div>
         </div>
     {% else %}

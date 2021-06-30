@@ -3,3 +3,5 @@ potato/.env
 potato/settings_local.py
 .vscode
 db.sqlite3
+board/static/board/env.js
+i/

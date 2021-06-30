@@ -28,6 +28,46 @@ Thank you to jsDelivr, MaxCDN and Cloudflare cdnjs for providing the free-of-cha
 
 The reference implementation of PotatoBoard (Things You Should Know - potato.adrian.id.au) uses an Ubuntu LTS server with nginx.
 
+## Developer Instructions
+
+1. Clone the git repo
+
+```bash
+git clone https://github.com/aidswidjaja/PotatoBoard
+```
+
+2. Set environment variables (see [Environment](#Environment))
+3. Source Python environment
+
+```bash
+source env/bin/activate.bash
+```
+
+Replace `bash` with your shell (e.g for new Macs this is `zsh`)
+
+4. Make migrations
+
+```bash
+python makemigrations && python migrate
+```
+
+5. Start the development server
+
+```bash
+python manage.py runserver
+```
+
 ## Deploy instructions
 
 Deploy instructions for Ubuntu Server 18.04 LTS with nginx on Microsoft Azure - but you should be able to use your choice of stack (Apache, httpd, etc.) on any platform (self-hosted, Heroku, GCP, AWS).
+
+## Environment
+
+Don't forget to set environment variables in:
+
+```
+potato/.env
+board/static/board/env.js
+board/subjects.py
+board/static/board/subjects.js
+```

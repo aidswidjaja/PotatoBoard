@@ -8,7 +8,7 @@ class Subject(models.Model):
         ("WKS", "Weekly Summary"),
         ("ENS", "English Standard"),
         ("ENA", "English Advanced"),
-        ("ENX", "English Extension 1"),
+        ("EN1", "English Extension 1"),
         ("EN2", "English Extension 2"),
         ("MAS", "Maths Standard 2"),
         ("MAT", "Maths Advanced"),

@@ -3,30 +3,44 @@
 
 {% load static %}
 
-<script src="{% static 'pipeline.js' %}"></script>
-
 <!-- Find PotatoBoard at https://github.com/aidswidjaja/potatoboard-->
 <!-- open source and everything under the MIT License! 2020-2021 (c) aidswidjaja -->
 
 <head>
     <title>Pipelining...</title>
     {% include "board/head.html" %}
-    
+
     <style>
-        body { margin: 5px; }
+        body {
+            margin: 5px;
+        }
     </style>
 </head>
 
 <body>
     {% if user.is_authenticated %}
 
-    <h1>Now outputting...</h1>
+    <h1>Console output</h1>
     <div id="console">
-        <samp>[Console] Page loaded. Begin logging.</samp>
+        <samp>[Console] Begin logging.</samp>
+        
     </div>
 
-    {% else %}
+    <!-- declare template variables, die in DRY -->
+
+    {{ post.title|json_script:"title" }}
+    {{ post.subject|json_script:"subject" }}
+    {{ post.get_subject_display|json_script:"get_subject_display" }}
+    {{ post.content|json_script:"content" }}
+    {{ post.channel|json_script:"channel" }}
+    {{ post.important|json_script:"important" }}
+
+    <script src="{% static 'env.js' %}"></script>
+    <script src="{% static 'subjects.js' %}"></script>
+    <script src="{% static 'pipeline.js' %}"></script>
+
     {% endif %}
+
 </body>
 
 </html>
