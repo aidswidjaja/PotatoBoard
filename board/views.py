@@ -17,7 +17,7 @@ def index(request):
     post_list = Post.objects.order_by('-date_created')[:10]
     post_list_all = Post.objects.order_by('-date_created')
     emergency = Emergency.objects.order_by('-date_created')[0]   # this will find the most recent iteration of the emergency msg
-    infotext = Information.objects.order_by('-date_modified')[0] # again, this will find the most recent iteration of infotext. Not really neccessary since we aren't iterating over the db anyway, but still a safe-to-have. [0] doesn't work since Emergency object is not iterable.
+    infotext = Information.objects.order_by('-date_modified')[:1] # again, this will find the most recent iteration of infotext. Not really neccessary since we aren't iterating over the db anyway, but still a safe-to-have. [0] doesn't work since Emergency object is not iterable.
     url = ROOT_URL
     template = loader.get_template('board/index.html')
     context = {
